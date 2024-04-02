@@ -1,17 +1,25 @@
-# data_creation.py
-
-import numpy as np
 import pandas as pd
+import numpy as np
 import os
 
-# Создание различных наборов данных, описывающих процесс (например, изменения ежедневной температуры) с аномалиями или шумом
+# Создание наборов данных
+# Пример создания данных о изменении дневной температуры
+np.random.seed(42)
+days = np.arange(1, 31)
+temperature = np.random.randint(20, 35, 30)
 
-# Создание и сохранение наборов данных в папках train и test
-train_data = pd.DataFrame(np.random.randn(100, 3), columns=['feature1', 'feature2', 'feature3'])
-test_data = pd.DataFrame(np.random.randn(50, 3), columns=['feature1', 'feature2', 'feature3'])
+data = pd.DataFrame({'Day': days, 'Temperature': temperature})
 
+# Добавление шумов и аномалий в данные
+# Дополните этот код для создания различных наборов данных с шумами и аномалиями
+
+# Разделение данных на train и test
+train_data = data.iloc[:20]
+test_data = data.iloc[20:]
+
+# Сохранение данных в папки "train" и "test"
 os.makedirs('train', exist_ok=True)
 os.makedirs('test', exist_ok=True)
 
 train_data.to_csv('train/train_data.csv', index=False)
-test_data.to_csv('test/test_data.csv', index=False)
+test_data.to_csv('test/test_data.csv')
