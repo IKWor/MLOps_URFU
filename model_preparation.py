@@ -1,18 +1,17 @@
-from sklearn.linear_model import LinearRegression
 import pandas as pd
+from sklearn.linear_model import LinearRegression
 
-# Загрузка предварительно обработанных данных
-preprocessed_data = pd.read_csv('preprocessed_data.csv')
+# Загрузка обработанных данных
+from sklearn.metrics import mean_squared_error
 
-# Разделение данных на признаки и целевую переменную
-X = preprocessed_data.drop('target', axis=1)
-y = preprocessed_data['target']
+# Подготовка модели
+X_train = scaled_data
+y_train = train_data['Day']
 
-# Обучение модели линейной регрессии
 model = LinearRegression()
-model.fit(X, y)
+model.fit(X_train, y_train)
 
-# Сохранение обученной модели для дальнейшего использования
-import joblib
-
-joblib.dump(model, 'trained_model.pkl')
+# Оценка модели на тренировочных данных
+train_predictions = model.predict(X_train)
+train_mse = mean_squared_error(y_train, train_predictions)
+print(f'Training Mean Squared Error: {train_mse}')
