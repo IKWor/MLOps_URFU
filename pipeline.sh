@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Предварительная обработка данных
-python preprocess_data.py
+python model_preprocessing.py
 
 # Обучение модели
 python model_preparation.py
