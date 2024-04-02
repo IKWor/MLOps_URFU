@@ -1,5 +1,3 @@
-# model_preprocessing.py
-
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
 
