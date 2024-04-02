@@ -1,9 +1,9 @@
-from sklearn.preprocessing import StandardScaler
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
 
-# Загрузка данных
+# Загрузка данных для предобработки
 train_data = pd.read_csv('train/train_data.csv')
 
-# Выполнение предварительной обработки, например, с использованием StandardScaler
+# Пример предобработки данных с использованием StandardScaler
 scaler = StandardScaler()
-scaled_data = scaler.fit_transform(train_data)
+scaled_data = scaler.fit_transform(train_data[['Temperature']])
