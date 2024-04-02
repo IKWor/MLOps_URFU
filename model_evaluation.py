@@ -1,6 +1,6 @@
-from sklearn.metrics import mean_squared_error
 import joblib
 import pandas as pd
+from sklearn.metrics import mean_squared_error
 
 # Загрузка обученной модели
 model = joblib.load('trained_model.pkl')
