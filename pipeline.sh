@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Предварительная обработка данных
+# Запуск скриптов для создания данных
+python data_creation.py
+
+# Предобработка данных
 python model_preprocessing.py
 
-# Обучение модели
+# Подготовка модели
 python model_preparation.py
 
 # Оценка модели
 python model_evaluation.py
-
-# Проверка модели на тестовых данных
-python model_testing.py
