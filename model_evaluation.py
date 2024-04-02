@@ -1,21 +1,20 @@
-import joblib
 import pandas as pd
 from sklearn.metrics import mean_squared_error
+from sklearn.externals import joblib
 
-# Загрузка обученной модели
-model = joblib.load('trained_model.pkl')
-
-# Загрузка тестовых данных
+# Загрузка данных для оценки модели
 test_data = pd.read_csv('test/test_data.csv')
 
-# Предсказание с помощью модели
-predictions = model.predict(test_data)
+# Пример предобработки данных для тестового набора
+# Дополните этот код для предобработки тестовых данных
 
-true_values = [1, 2, 3, 4, 5]
-predictions = [1.2, 2.3, 3.5, 4.1, 5.2]
+# Загрузка сохраненной модели
+model = joblib.load('model.pkl')
 
-mse = mean_squared_error(true_values, predictions)
+X_test = scaled_test_data
+y_test = test_data['Day']
 
-# Оценка модели с использованием среднеквадратичной ошибки
-mse = mean_squared_error(true_values, predictions)
-print(f'Mean Squared Error: {mse}')
+# Оценка модели на тестовых данных
+test_predictions = model.predict(X_test)
+test_mse = mean_squared_error(y_test, test_predictions)
+print(f'Test Mean Squared Error: {test_mse}')
