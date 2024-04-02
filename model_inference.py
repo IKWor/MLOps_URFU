@@ -1,3 +1,4 @@
+import pandas as pd  # Добавьте этот импорт
 import joblib
 
 # Загрузка обученной модели
