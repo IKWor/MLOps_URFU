@@ -1,10 +1,41 @@
 pipeline {
     agent any
+    
     stages {
-     stage('Hello') {
-                steps {
-                    echo 'Hello world'
+        stage('Get Data') {
+            steps {
+                script {
+                    // Шаг загрузки данных
+                    sh 'python download_data.py'
                 }
             }
-     }
+        }
+        
+        stage('Process Data') {
+            steps {
+                script {
+                    // Шаг обработки данных
+                    sh 'python process_data.py'
+                }
+            }
+        }
+        
+        stage('Train Model') {
+            steps {
+                script {
+                    // Шаг создания и обучения модели
+                    sh 'python train_model.py'
+                }
+            }
+        }
+        
+        stage('Save Model') {
+            steps {
+                script {
+                    // Шаг сохранения обученной модели
+                    sh 'python save_model.py'
+                }
+            }
+        }
+    }
 }
